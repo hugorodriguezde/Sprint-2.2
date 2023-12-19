@@ -78,21 +78,49 @@ var total = 0;
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array
-}
+    let productId = products.find(item => item.id === id)
+    if (productId){
+        let addedProduct = cart.find(item => item.id === id);
+    if(addedProduct){
+        addedProduct.quantity += 1;
+    }
+    else{
+        cart.push({...productId, quantity: 1});
+    }
+    }
+}  
 
 // Exercise 2
 function cleanCart() {
-
+    cart = [];
+    total = 0;
 }
 
 // Exercise 3
-function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
-}
+    function calculateTotal() {
+        // Calculate total price of the cart using the "cartList" array
+        for(let item of cart)
+        {
+            total = item.quantity * item.price;
+        }
+        return total;
+    }
 
 // Exercise 4
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    for (let product of cart) {
+        hasOffer = product.hasOwnProperty("offer");
+        if (hasOffer) {
+            isPromotionEnjoyer = product.quantity >= product.offer.number;
+            if(isPromotionEnjoyer)
+            {
+                    var priceWithoutDiscount = product.price * product.quantity;
+                    var discountPercent = priceWithoutDiscount * (product.offer.percent / 100);
+                    product.subtotalWithDiscount = priceWithoutDiscount - discountPercent;
+            }
+        }
+    }
 }
 
 // Exercise 5
