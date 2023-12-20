@@ -74,6 +74,15 @@ var cart = [];
 
 var total = 0;
 
+function countingProducts()
+{
+    const count = document.getElementById("count_product");
+    let totalCount= cart.reduce((ac, product) => {
+        return ac + product.quantity;
+    }, 0);
+    count.innerText = totalCount;
+    
+}
 // Exercise 1
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
@@ -88,6 +97,7 @@ function buy(id) {
         cart.push({...productId, quantity: 1});
     }
     }
+    countingProducts();
 }  
 
 // Exercise 2
@@ -99,6 +109,8 @@ function cleanCart() {
     cartToErase.innerHTML = "";
     const priceToErase = document.getElementById("total_price")
     priceToErase.innerText = "0";
+    const countToErase = document.getElementById("count_product");
+    countToErase.innerText = "0";
 }
 
 // Exercise 3
