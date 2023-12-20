@@ -2,7 +2,7 @@
 var products = [
     {
         id: 1,
-        name: 'cooking oil',
+        name: 'Cooking oil',
         price: 10.5,
         type: 'grocery',
         offer: {
@@ -94,17 +94,29 @@ function buy(id) {
 function cleanCart() {
     cart = [];
     total = 0;
+
+    const cartToErase = document.getElementById("cart_list")
+    cartToErase.innerHTML = "";
+    const priceToErase = document.getElementById("total_price")
+    priceToErase.innerText = "0";
 }
 
 // Exercise 3
-    function calculateTotal() {
+function calculateTotal() {
         // Calculate total price of the cart using the "cartList" array
-        for(let item of cart)
+        total = 0;
+    for(let item of cart)
+    {   
+        if(item.hasOwnProperty("subtotalWithDiscount"))
         {
-            total = item.quantity * item.price;
+            total += item.subtotalWithDiscount;
         }
-        return total;
+        else{
+         total += item.quantity * item.price;
+        }
     }
+     return total;
+}
 
 // Exercise 4
 function applyPromotionsCart() {
@@ -125,10 +137,44 @@ function applyPromotionsCart() {
 
 // Exercise 5
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
+    // Fill the shopping cart modal manipulating the shopping cart dom2
+    applyPromotionsCart();
+    const shopCart = document.getElementById("cart_list")
+    let productList = [];
+
+    cart.forEach((product) => { 
+        const productRow = createRow(product);
+        productList.push(productRow);
+    })
+    shopCart.innerHTML = '';
+    shopCart.append(...productList);
+    
+    const totalPrice = document.getElementById("total_price")
+    totalPrice.textContent = calculateTotal()
 }
 
+function createRow(product)
+{
+    let tableRow = document.createElement("tr");
+    let tableHead = document.createElement("th");
 
+    tableHead.setAttribute("scope", "row");
+    tableHead.textContent= product.name;
+
+    let tableData1 = document.createElement("td")
+    let tableData2 = document.createElement("td")
+    let tableData3 = document.createElement("td")
+
+    tableData1.textContent = product.price;
+    tableData2.textContent = product.quantity;
+    tableData3.textContent = product.hasOwnProperty('subtotalWithDiscount') 
+        ? product.subtotalWithDiscount 
+        : product.price * product.quantity;
+
+    tableRow.append(tableHead, tableData1, tableData2, tableData3)
+
+    return tableRow
+}
 // ** Nivell II **
 
 // Exercise 7
