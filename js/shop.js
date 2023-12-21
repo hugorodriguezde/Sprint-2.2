@@ -183,15 +183,40 @@ function createRow(product)
         ? product.subtotalWithDiscount 
         : product.price * product.quantity;
 
-    tableRow.append(tableHead, tableData1, tableData2, tableData3)
-
-    return tableRow
+        let decreaseButton = document.createElement("button");
+        decreaseButton.textContent = "-";
+        decreaseButton.addEventListener("click", () => removeFromCart(product.id));
+    
+        let tableData4 = document.createElement("td");
+        tableData4.appendChild(decreaseButton);
+    
+        tableRow.append(tableHead, tableData1, tableData2, tableData3, tableData4);
+    
+        return tableRow;
 }
+
 // ** Nivell II **
 
 // Exercise 7
 function removeFromCart(id) {
+    cart.map((product) =>
+    {
+        if (product.id === id && product.quantity > 0)
+        {
+            product.quantity -= 1;
+        }
 
+        if (product.quantity === 0)
+        {
+            cart.splice(cart.indexOf(product), 1);
+        }
+
+        if (product.offer && product.quantity < product.offer.number) {
+            delete product.subtotalWithDiscount;
+        }
+        countingProducts();
+        printCart();
+    });
 }
 
 function open_modal() {
