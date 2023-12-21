@@ -1,6 +1,7 @@
 
 // Exercise 6
-function validate() {
+function validate(event) {
+	event.preventDefault();
 	var error = 0;
 	// Get the input fields
 	var fName = document.getElementById('fName');
@@ -71,9 +72,9 @@ function validate() {
 		fPhone.classList.remove('is-invalid');
 	}
 
-	if(error>0){
+	if (error > 0) {
 		alert("Error");
-	}else{
+	} else {
 		alert("OK");
 	}
 
