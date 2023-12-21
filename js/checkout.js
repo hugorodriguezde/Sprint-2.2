@@ -64,7 +64,7 @@ function validate(event) {
 		fPassword.classList.remove('is-invalid');
 	}
 
-	if(!/^[0-9]+$/.test(fPhone.value.trim()) || fPhone.value == "" || fPhone.value.length < 3){
+	if(!/^[0-9]+$/.test(fPhone.value.trim()) || fPhone.value == "" || fPhone.value.length < 9){
 		error++;
 		fPhone.classList.add('is-invalid');
 	}
