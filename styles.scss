@@ -1,0 +1,78 @@
+body {
+    background-color: #F8FAE5;
+    color: #76453B;
+}
+
+header {
+    background-color: #43766C;
+    color: #F8FAE5;
+}
+
+
+
+button:hover {
+    background-color: #43766C!important;
+
+}
+
+footer {
+    background-color: #fffbb7;
+
+}
+
+.card {
+    background-color: #F8FAE5;
+}
+
+.card-image{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    align-items: center;
+}
+
+nav{
+    background-color: #F8FAE5;
+}
+.navbar-brand {
+    color: #43766C;
+}
+
+.navbar-brand:hover{
+    color:#76453B;
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease;
+    color: #76453B !important;
+}
+
+
+.btn:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease;
+    background-color: #76453B !important;
+}
+
+.modal-background{
+    background-color: #F8FAE5!important;
+}
+
+.table > :not(caption) > * > * {
+    background-color:#F8FAE5 !important ;
+}
+
+#cart_list {
+    button{
+        background-color: #F8FAE5 ;
+        font-size: large;
+    }
+    button:hover{
+        background-color: #B19470 !important;
+    }
+}
+footer {
+    background-color: #F8FAE5;
+    color:#76453B;
+}
