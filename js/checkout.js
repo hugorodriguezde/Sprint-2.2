@@ -71,11 +71,4 @@ function validate(event) {
 	else {
 		fPhone.classList.remove('is-invalid');
 	}
-
-	if (error > 0) {
-		alert("Error");
-	} else {
-		alert("OK");
-	}
-
 }
